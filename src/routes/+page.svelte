@@ -22,7 +22,7 @@
 	}
 
 	// ── Countdown ──────────────────────────────────────────────────────
-	const TARGET = new Date('2026-05-16T00:00:00');
+	const TARGET = new Date('2026-05-16T11:00:00');
 	let days = $state('13');
 	let hours = $state('00');
 	let minutes = $state('00');
