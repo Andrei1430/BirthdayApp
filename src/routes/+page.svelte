@@ -382,17 +382,49 @@
 		<div class="sec-rule"></div>
 	</header>
 	<div class="loc-card reveal">
-		<div class="map-ph">
-			<div class="map-grid"></div>
-			<div class="map-glow"></div>
-			<span class="map-pin">📍</span>
+		<div class="map-embed">
+			<iframe
+				src="https://maps.google.com/maps?q=Cabana+Paltinei+1,+Gilau,+Cluj,+Romania&output=embed"
+				width="100%"
+				height="100%"
+				style="border:0"
+				allowfullscreen
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+				title="Cabana Pălținei map"
+			></iframe>
 		</div>
 		<div class="loc-body">
-			<p class="loc-text">
-				<strong>The exact location will be revealed soon!</strong><br />
-				Stay tuned — I promise it'll be worth the wait.
-			</p>
-			<div class="loc-badge">📍 Location TBD — Stay tuned for the address!</div>
+			<div class="loc-addr-row">
+				<span class="loc-addr-pin">📍</span>
+				<div>
+					<p class="loc-addr-name">Cabana Pălținei 1</p>
+					<p class="loc-addr-city">Gilău, Cluj</p>
+				</div>
+			</div>
+
+			<div class="waze-warn">
+				<div class="waze-warn-head">
+					<span class="waze-warn-emoji">⚠️</span>
+					<strong class="waze-warn-title">Use Waze — It's Required!</strong>
+				</div>
+				<p class="waze-warn-text">
+					This location <strong>cannot be safely reached with Google Maps or Apple Maps.</strong>
+					You <strong>must use Waze</strong> — it's the only navigation app with accurate routing for this route. Do not ignore this!
+				</p>
+			</div>
+
+			<a
+				href="https://waze.com/ul?q=Cabana+Paltinei+1,+Gilau,+Cluj,+Romania&navigate=yes"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="waze-btn"
+			>
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<polygon points="3 11 22 2 13 21 11 13 3 11"/>
+				</svg>
+				Open in Waze
+			</a>
 		</div>
 	</div>
 </section>
@@ -954,34 +986,55 @@
 		border-radius: 24px; overflow: hidden;
 		box-shadow: 0 24px 64px rgba(0, 0, 0, 0.38);
 	}
-	.map-ph {
-		height: 220px;
-		background: linear-gradient(135deg, rgba(69, 46, 90, 0.7), rgba(30, 16, 78, 0.92));
-		position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;
+	.map-embed {
+		height: 280px; overflow: hidden;
+		border-radius: 24px 24px 0 0;
 	}
-	.map-grid {
-		position: absolute; inset: 0;
-		background-image: linear-gradient(rgba(255,101,63,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,101,63,0.07) 1px, transparent 1px);
-		background-size: 40px 40px;
+	.map-embed iframe { width: 100%; height: 100%; display: block; }
+	.loc-body { padding: 1.75rem 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+	.loc-addr-row {
+		display: flex; align-items: center; gap: 1rem;
 	}
-	.map-glow {
-		position: absolute; width: 200px; height: 200px; border-radius: 50%;
-		background: radial-gradient(circle, rgba(255, 101, 63, 0.2), transparent 70%);
+	.loc-addr-pin {
+		font-size: 2rem; flex-shrink: 0;
+		filter: drop-shadow(0 0 12px rgba(255,101,63,0.5));
 	}
-	.map-pin {
-		position: relative; z-index: 1; font-size: 3.2rem;
-		filter: drop-shadow(0 0 28px rgba(255, 101, 63, 0.65));
-		animation: pin-bob 2.8s ease-in-out infinite;
+	.loc-addr-name {
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem; letter-spacing: 0.04em; color: #ffc85c;
 	}
-	.loc-body { padding: 1.75rem 2rem; }
-	.loc-text { font-size: 1rem; color: rgba(245,240,255,0.62); line-height: 1.75; }
-	.loc-text strong { color: #ffc85c; }
-	.loc-badge {
-		display: inline-flex; align-items: center; gap: 0.4rem;
-		margin-top: 1.1rem; padding: 0.4rem 1rem;
-		background: rgba(255,101,63,0.1); border: 1px solid rgba(255,101,63,0.26);
-		border-radius: 50px; font-size: 0.8rem; color: #ff653f;
+	.loc-addr-city { font-size: 0.88rem; color: rgba(245,240,255,0.55); margin-top: 0.15rem; }
+
+	.waze-warn {
+		background: rgba(255, 160, 30, 0.1);
+		border: 1.5px solid rgba(255, 160, 30, 0.55);
+		border-radius: 14px; padding: 1.1rem 1.25rem;
 	}
+	.waze-warn-head {
+		display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.55rem;
+	}
+	.waze-warn-emoji { font-size: 1.25rem; }
+	.waze-warn-title { font-size: 0.95rem; color: #ffb840; letter-spacing: 0.02em; }
+	.waze-warn-text { font-size: 0.875rem; color: rgba(245,240,255,0.75); line-height: 1.65; }
+	.waze-warn-text strong { color: #ffb840; }
+
+	.waze-btn {
+		display: inline-flex; align-items: center; gap: 0.55rem;
+		align-self: flex-start;
+		padding: 0.75rem 1.6rem;
+		background: linear-gradient(135deg, #33ccbe, #1a9d94);
+		border-radius: 50px;
+		color: #fff; font-size: 0.92rem; font-weight: 700;
+		text-decoration: none; letter-spacing: 0.04em;
+		box-shadow: 0 4px 16px rgba(51, 204, 190, 0.3);
+		transition: box-shadow 0.3s, transform 0.2s;
+	}
+	.waze-btn:hover {
+		box-shadow: 0 8px 28px rgba(51, 204, 190, 0.5);
+		transform: translateY(-2px);
+	}
+	.waze-btn:active { transform: translateY(0); }
 
 	/* ─── FOOTER ─── */
 	footer {
@@ -1104,7 +1157,6 @@
 		50% { box-shadow: 0 0 32px rgba(255,101,63,0.26), 0 0 55px rgba(255,200,92,0.07), inset 0 1px 0 rgba(255,255,255,0.06); }
 	}
 	@keyframes blink { 0%, 100% { opacity: 0.48; } 50% { opacity: 0.14; } }
-	@keyframes pin-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 	@keyframes hb { 0%, 100% { transform: scale(1); } 35% { transform: scale(1.28); } 55% { transform: scale(0.92); } }
 	@keyframes dlg-overlay-in { from { opacity: 0; } to { opacity: 1; } }
 	@keyframes dlg-card-in { from { opacity: 0; transform: scale(0.88) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
