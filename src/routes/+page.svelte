@@ -377,7 +377,7 @@
 <section id="location" class="loc-section">
 	<div class="sec-orb lo-orb"></div>
 	<header class="sec-head reveal">
-		<span class="sec-tag">Where to Find Me</span>
+		<span class="sec-tag">Where?</span>
 		<h2 class="sec-title">Location</h2>
 		<div class="sec-rule"></div>
 	</header>
@@ -391,14 +391,14 @@
 				allowfullscreen
 				loading="lazy"
 				referrerpolicy="no-referrer-when-downgrade"
-				title="Cabana Pălținei map"
+				title="Cabana Paltinei map"
 			></iframe>
 		</div>
 		<div class="loc-body">
 			<div class="loc-addr-row">
 				<span class="loc-addr-pin">📍</span>
 				<div>
-					<p class="loc-addr-name">Cabana Pălținei 1</p>
+					<p class="loc-addr-name">Cabana Paltinei 1</p>
 					<p class="loc-addr-city">Gilău, Cluj</p>
 				</div>
 			</div>
@@ -431,7 +431,7 @@
 
 <!-- ════════════════ FOOTER ════════════════ -->
 <footer>
-	<p class="ft">Made with <span class="fheart">♥</span> for <span class="fname">Andrei</span>'s Birthday</p>
+	<p class="ft">Made with <span class="fheart">♥</span> for <span class="fname">Gherghel</span>'s Birthday</p>
 	<p class="fdate">May 16 · 2026</p>
 </footer>
 
