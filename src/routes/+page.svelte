@@ -206,7 +206,6 @@
 		<li><a href="#countdown">Countdown</a></li>
 		<li><a href="#rsvp">RSVP</a></li>
 		<li><a href="#location">Location</a></li>
-		<li><a href="#activities">Activities</a></li>
 	</ul>
 	<button class="ham" class:open={drawerOpen} onclick={() => (drawerOpen = !drawerOpen)} aria-label="Toggle menu">
 		<span></span><span></span><span></span>
@@ -220,7 +219,6 @@
 	<a href="#countdown" onclick={() => (drawerOpen = false)}>Countdown</a>
 	<a href="#rsvp" onclick={() => (drawerOpen = false)}>RSVP</a>
 	<a href="#location" onclick={() => (drawerOpen = false)}>Location</a>
-	<a href="#activities" onclick={() => (drawerOpen = false)}>Activities</a>
 </nav>
 
 <!-- ════════════════ HERO ════════════════ -->
@@ -392,31 +390,6 @@
 			</p>
 			<div class="loc-badge">📍 Location TBD — Stay tuned for the address!</div>
 		</div>
-	</div>
-</section>
-
-<!-- ════════════════ ACTIVITIES ════════════════ -->
-<section id="activities" class="act-section">
-	<div class="sec-orb act-orb"></div>
-	<header class="sec-head reveal">
-		<span class="sec-tag">What's in Store</span>
-		<h2 class="sec-title">Activities</h2>
-		<div class="sec-rule"></div>
-	</header>
-	<div class="act-grid">
-		{#each [
-			{ n: '01', icon: '🎲', title: 'Board Games', desc: 'Strategy, luck, and friendly competition' },
-			{ n: '02', icon: '🍹', title: 'Drinking', desc: 'Craft cocktails and good vibes' },
-			{ n: '03', icon: '🛁', title: 'Soaking', desc: 'Unwind in the jacuzzi under the stars' },
-			{ n: '04', icon: '😂', title: 'Laughing', desc: 'Good friends, great stories, zero filters' }
-		] as act, i}
-			<div class="act-card reveal" style="transition-delay: {i * 100}ms">
-				<span class="act-n">{act.n}</span>
-				<span class="act-icon">{act.icon}</span>
-				<h3 class="act-title">{act.title}</h3>
-				<p class="act-desc">{act.desc}</p>
-			</div>
-		{/each}
 	</div>
 </section>
 
@@ -1006,46 +979,6 @@
 		border-radius: 50px; font-size: 0.8rem; color: #ff653f;
 	}
 
-	/* ─── ACTIVITIES ─── */
-	.act-orb {
-		width: 480px; height: 480px;
-		background: radial-gradient(circle, rgba(255,200,92,0.05), transparent 70%);
-		top: 0; right: -60px;
-	}
-	.act-grid {
-		display: grid; grid-template-columns: repeat(2, 1fr);
-		gap: 1.25rem; max-width: 840px; margin: 0 auto;
-	}
-	.act-card {
-		background: rgba(69,46,90,0.3); backdrop-filter: blur(22px);
-		border: 1px solid rgba(255,101,63,0.12); border-radius: 20px;
-		padding: 2.25rem 1.75rem; position: relative; overflow: hidden;
-		transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s, border-color 0.4s;
-		cursor: default;
-	}
-	.act-card::before {
-		content: ''; position: absolute; inset: 0;
-		background: linear-gradient(135deg, rgba(255,101,63,0.07), transparent 65%);
-		opacity: 0; transition: opacity 0.4s;
-	}
-	.act-card:hover { transform: translateY(-8px); border-color: rgba(255,101,63,0.35); box-shadow: 0 18px 48px rgba(0,0,0,0.3), 0 0 32px rgba(255,101,63,0.09); }
-	.act-card:hover::before { opacity: 1; }
-	.act-n {
-		position: absolute; top: 1rem; right: 1.3rem;
-		font-family: 'Bebas Neue', sans-serif; font-size: 3.2rem;
-		color: rgba(255,101,63,0.07); line-height: 1;
-		pointer-events: none; transition: color 0.4s;
-	}
-	.act-card:hover .act-n { color: rgba(255,101,63,0.14); }
-	.act-icon {
-		font-size: 2.5rem; display: block; margin-bottom: 1rem;
-		filter: drop-shadow(0 0 10px rgba(255,200,92,0.3));
-		transition: filter 0.4s, transform 0.4s;
-	}
-	.act-card:hover .act-icon { filter: drop-shadow(0 0 22px rgba(255,200,92,0.65)); transform: scale(1.1); }
-	.act-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.45rem; letter-spacing: 0.04em; color: #f5f0ff; margin-bottom: 0.4rem; }
-	.act-desc { font-size: 0.85rem; color: rgba(245,240,255,0.48); line-height: 1.65; }
-
 	/* ─── FOOTER ─── */
 	footer {
 		padding: 2.5rem 1.5rem; text-align: center;
@@ -1177,7 +1110,6 @@
 		.nav-links { display: none; }
 		.ham { display: flex; }
 		.rsvp-cards { grid-template-columns: 1fr; max-width: 400px; }
-		.act-grid { grid-template-columns: 1fr; }
 		.guests-grid { grid-template-columns: 1fr; }
 		.loc-body { padding: 1.4rem; }
 		section { padding: 5rem 1rem; }
