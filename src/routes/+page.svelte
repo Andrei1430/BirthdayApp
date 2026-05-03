@@ -9,7 +9,7 @@
 </svelte:head>
 
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick as nextTick } from 'svelte';
 
 	// ── Types ──────────────────────────────────────────────────────────
 	type Response = 'yes' | 'yes+1' | 'no';
@@ -58,11 +58,14 @@
 
 	// ── Participants ───────────────────────────────────────────────────
 	let participants = $state<Participant[]>([]);
+	let revealObserver: IntersectionObserver | null = null;
 
 	async function loadParticipants() {
 		try {
 			const res = await fetch('/api/rsvp');
 			participants = await res.json();
+			await nextTick();
+			document.querySelectorAll('.reveal').forEach((el) => revealObserver?.observe(el));
 		} catch {
 			/* noop */
 		}
@@ -182,7 +185,8 @@
 		const loop=()=>{ ctx.clearRect(0,0,W,H); dots.forEach(d=>{d.step();d.paint();}); rafId=requestAnimationFrame(loop); };
 		loop();
 
-		const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.08});
+		revealObserver=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.08});
+		const io=revealObserver;
 		document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 		return ()=>{ clearInterval(timer); cancelAnimationFrame(rafId); window.removeEventListener('resize',resize); io.disconnect(); };
